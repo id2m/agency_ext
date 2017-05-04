@@ -1,0 +1,81 @@
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+      
+
+    <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
+
+    <meta name="description" content="{{ site.description }}">
+
+    <!-- http://realfavicongenerator.net/ -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{{site.baseurl}}/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="{{site.baseurl}}/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="{{site.baseurl}}/favicons/favicon-16x16.png" sizes="16x16">
+    <link rel="mask-icon" href="{{site.baseurl}}/favicons/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="theme-color" content="#fed136">
+    {% comment %}
+        manifest.json need to be adapted if de-commented
+        <link rel="manifest" href="{{site.baseurl}}/manifest.json">
+    {% endcomment %}
+
+    <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+
+    <!-- Custom CSS & Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
+    {% comment %}
+    <style type="text/css">
+        {% capture include_to_scssify %}{% include agency/critical.scss %}{% endcapture %}
+        {{ include_to_scssify | scssify | strip_newlines }}
+    </style>
+    {% endcomment %}
+    {% comment %}<style>
+      {% asset_source _bootstrap.css.scss %}
+    </style>{% endcomment %}
+    {% comment %}<style type="text/css">
+        {% include agency/critical.scss %}
+    </style>{% endcomment %}
+
+    
+
+    <style>
+      {% asset_source bootstrap-crit.css.scss %}
+    </style>
+
+
+    {% comment %}<link rel="stylesheet" href="{{ "/style.css" | prepend: site.baseurl }}">{% endcomment %}
+
+    
+    <!-- Custom Fonts -->
+    {% comment %}<link rel="stylesheet" href="{{ "/css/font-awesome/css/font-awesome.min.css" | prepend: site.baseurl }}">{% endcomment %}
+    <script>
+      {% asset_source plugins/loadCSS.min.js %}
+      loadCSS("{% asset_path bootstrap-noncrit.css %}");  
+      loadCSS("{% asset_path css/font-awesome.4.7.0.css %}");     
+    </script>
+   
+
+    <noscript>
+        <link href="{% asset_path bootstrap-noncrit.css %}" rel="stylesheet">   
+        <link href="{% asset_path css/font-awesome.4.7.0.css %}" rel="stylesheet">     
+    </noscript>
+   {% comment %} <noscript>
+        <link href="{% asset_path css/font-awesome.4.7.0.css %}" rel="stylesheet">     
+    </noscript>{% endcomment %}
+
+
+    {% comment %} 
+    - add google font family link from _agency/site-config/font-family/
+    {% endcomment %}
+    {% include agency/utils/site-config/extract_head_google-font.html %}
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>

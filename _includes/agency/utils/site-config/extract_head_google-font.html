@@ -1,0 +1,49 @@
+
+{% include coll_ext/config/common-param.html %}
+
+{% assign path_ref = '/site-config/google-font/' %}
+{% assign model_sort_ref = 'google-font-order' %}
+
+{% for list in site.data.agency.list-detail-items %}
+  {% if list.id == model_sort_ref %} 
+    {% if list.force_display_coll_ext == true %}
+      {% include coll_ext/extra_utils/list-detail-items_init_step.html %}
+     
+      {% include coll_ext/main.html
+        force_page_ref_input=true
+        force_no_display=true       
+      %}
+    {% endif %}
+  {% endif %}
+{% endfor %}
+
+
+{% assign array_items = items_display_subsection | remove_first: delim | split: delim %}
+{% assign array_items_size = array_items.size | minus: 1 %}
+
+{% for index_item in (0..array_items_size) %}
+
+  {% assign index_array_part = array_items[index_item] | plus: 0  %}
+  {% assign item_tmp = raw_items[index_array_part] %}
+
+  {% comment %}
+  - add links import font family in _includes/agency/head.html 
+  - see: _agency/site-config/font-families/index.md  
+  {% endcomment %}  
+
+  {% assign link_html_first = '<link href="' %}
+  {% assign link_html_last = '" rel="stylesheet" type="text/css">' %}
+
+  {% if item_tmp.link_font %}
+    {% assign link_html = link_html_first | append: item_tmp.link_font %}
+    {% assign link_html = link_html | append: link_html_last %}
+
+    {{link_html}}
+
+  {% endif %} 
+
+{% endfor %}
+
+
+ 
+

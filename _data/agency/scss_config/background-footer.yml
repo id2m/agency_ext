@@ -1,0 +1,11 @@
+config:
+  - type: 'color'
+  - source: 'item'
+
+# list of variables used in sass : color_{{id}}_gl ; color_bg_color_footer_gl
+# ! must correspond to metadata field names in section /site_local/_agency/site-config/footer/index.md 
+# update list if new metadata
+list-id:
+  - id: 'bg_color_footer'
+ 
+   

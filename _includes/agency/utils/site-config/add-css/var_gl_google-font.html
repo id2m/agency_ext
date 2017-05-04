@@ -1,0 +1,126 @@
+
+{% include coll_ext/config/common-param.html %}
+
+{% assign collection_label = 'agency' %}
+{% assign default_order_sort_coll = 'order' %}
+
+{% assign path_ref = '/site-config/google-font/' %}
+{% assign model_sort_ref = 'google-font-order' %}
+
+{% assign font_common = '' %}
+
+
+{% for collection in site.collections %}
+  {% if collection.label == collection_label %}
+    {% assign raw_items_init = collection.docs %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+{% assign items_tmp = raw_items_init | sort: default_order_sort_coll %}
+
+{% for item_tmp in items_tmp %}    
+  {% if item_tmp.path contains path_ref %} 
+    {% if item_tmp.path contains extension_section_path %}
+        {% comment %}specific{% endcomment %}
+        {% include coll_ext/extra_utils/text/format-font-families.html 
+          font_families=item_tmp.font_common
+        %}
+        {% assign font_common = font_families_format %}       
+
+    {% endif %}
+  {% endif %}
+{% endfor %}
+
+
+{% for list in site.data.agency.list-detail-items %}
+  {% if list.id == model_sort_ref %} 
+    {% if list.force_display_coll_ext == true %}
+      {% include coll_ext/extra_utils/list-detail-items_init_step.html %}     
+      {% include coll_ext/main.html
+        force_page_ref_input=true
+        force_no_display=true       
+      %}
+    {% endif %}
+  {% endif %}
+{% endfor %}
+{% assign array_items = items_display_subsection | remove_first: delim | split: delim %}
+{% assign array_items_size = array_items.size | minus: 1 %}
+
+{% for index_item in (0..array_items_size) %}
+
+  {% assign index_array_part = array_items[index_item] | plus: 0  %}
+  {% assign item_tmp = raw_items[index_array_part] %}
+
+  {% assign font_current = font_common %}
+
+  {% comment %}
+  - font family variables global, used in _includes/agency/css/agency.css, add new one's if necessary
+  - call: _layouts/style.css
+  - see: _agency/site-config/font-families/index.md
+  - todo optim via sass var, tested in admien33/lcb, via _assets pipeline pluggin
+  {% endcomment %}
+
+  {% comment %}
+  - extract font-family name from google url
+  - ex: https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700
+  {% endcomment %}
+  {% if item_tmp.link_font %}    
+
+    {% include coll_ext/extra_utils/text/split-text-until-first-match.html 
+      text= item_tmp.link_font
+      match_ref='family='
+    %}
+    {% assign font_name = text_splitted %}
+    {% include coll_ext/extra_utils/text/keep-text-until-first-match.html
+      text= font_name
+      match_ref=':'
+      filter_match_ref=true
+    %}
+    {% if text_splitted != '' %}
+      {% assign font_name = text_splitted %}
+    {% endif %}
+    {% if font_name contains '+' %}
+      {% assign font_name = font_name | replace: '+', ' ' %}      
+    {% endif %}
+
+    {% include coll_ext/extra_utils/text/format-font-families.html 
+      font_families=font_name 
+    %}
+    {% if font_families_format != '' %}
+      {% assign font_current = font_families_format %}
+      {% if font_common != '' %}
+        {% comment %}defensive{% endcomment %}
+        {% assign font_current = font_current | append: ',' | append: font_common %}
+      {% endif %}
+    {% endif %} 
+
+  {% endif %}   
+
+
+  {% comment %}
+  - critical! V1, used filename from _agency/site-config/font-families
+  - optim via sass, todo
+  {% endcomment %}
+  {% assign name_id = null %}
+  {% include coll_ext/utils/extract_from_url/name_id.html 
+      url=item_tmp.url
+      last_part_only=true
+  %}
+
+  {% if name_id == 'font-default-body' %}
+    {% assign font_default_body_gl = font_current %}
+  {% endif %}
+  {% if name_id == 'font-primary' %}
+    {% assign font_primary_gl = font_current %}
+  {% endif %}
+  {% if name_id == 'font-secondary' %}
+    {% assign font_secondary_gl = font_current %}
+  {% endif %}
+  {% if name_id == 'font-name-navbar-brand' %}
+    {% assign font_navbar_brand_gl = font_current %}
+  {% endif %}
+
+{% endfor %}
+
+
+ 

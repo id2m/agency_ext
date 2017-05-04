@@ -1,0 +1,13 @@
+config:
+  - type: 'color'
+  - source: 'section'  
+
+# list of variables used in sass : color_{{id}}_gl ; color_primary_gl
+# ! must correspond to filename items in section /_agency/site-config/palette-color
+# update list if new item
+list-id:
+  - id: 'primary'
+  - id: 'secondary'
+  - id: 'secondary-dark'
+  - id: 'muted'
+   

@@ -1,0 +1,62 @@
+
+{% include coll_ext/config/common-param.html %}
+
+
+{% assign collection_label = 'agency' %}
+{% assign default_order_sort_coll = 'order' %}
+
+{% assign path_ref_bg_section = '/site-config/background-sections/' %}
+{% assign path_ref_bg_footer = '/site-config/footer/' %}
+
+
+{% for collection in site.collections %}
+  {% if collection.label == collection_label %}
+    {% assign raw_items_init = collection.docs %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+{% assign items_tmp = raw_items_init | sort: default_order_sort_coll %}
+
+
+{% comment %}
+  - add sass variables used in /_assets/stylesheets/_custom.css.scss
+  - name sass var : color_{{id}}_gl
+  - list id ref : see /_data/agency/scss_config/background-sections.yml, /_data/agency/scss_config/background-footer.yml  
+  - update list if new or change color meta fields of section :
+       /_agency/site-config/background-sections/index.md,
+       /_agency/site-config/footer/index.md
+{% endcomment %}
+
+{% assign deb_sass_var = '$' %}
+{% assign mid_sass_var = ': ' %}
+{% assign fin_sass_var = ';' %}
+
+{% for item_tmp in items_tmp %}
+
+  {% comment %}background-sections part{% endcomment %}
+  {% if item_tmp.path contains path_ref_bg_section %}
+    {% if item_tmp.path contains extension_section_path  %}
+      {% include coll_ext/utils/scss_liquid/add_sass_var_from_list_id_value.html
+        list_id_value=item_tmp.list_color_id_value
+        list_id_ref=site.data.agency.scss_config.background-sections.list-id
+        pref_sass_var='color_'
+        suf_sass_var='_gl' 
+      %} 
+    {% endif %}
+  {% endif %}
+
+  {% comment %}background-footer part{% endcomment %}
+  {% if item_tmp.path contains path_ref_bg_footer %} 
+    {% if item_tmp.path contains extension_section_path  %}
+      {% include coll_ext/utils/scss_liquid/add_sass_var_from_list_id_value.html
+        list_id_value=item_tmp.list_color_id_value
+        list_id_ref=site.data.agency.scss_config.background-footer.list-id
+        pref_sass_var='color_'
+        suf_sass_var='_gl' 
+      %}
+    {% endif %}
+  {% endif %}
+
+{% endfor %}
+
+

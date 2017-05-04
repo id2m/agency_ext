@@ -1,0 +1,34 @@
+
+{% include coll_ext/config/common-param.html %}
+
+{% assign collection_label = 'agency' %}
+{% assign default_order_sort_coll = 'order' %}
+
+{% for collection in site.collections %}
+  {% if collection.label == collection_label %}
+    {% assign raw_items = collection.docs %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+{% assign items_tmp = raw_items | sort: default_order_sort_coll %}
+
+
+{% for item_tmp in items_tmp %}
+
+	{% if item_tmp.path contains '/welcome-message/text-header.md' %} 
+    {% if item_tmp.order < 100 %}
+      {% assign textWelcome = item_tmp.content %} 
+    {% endif %}
+  {% endif %}
+
+  {% if item_tmp.path contains '/welcome-message/bouton-header.md' %} 
+    
+      {% assign btnWelcome = item_tmp.content %}
+      {% assign btnWelcomeDisplay=false %}
+      {% if item_tmp.order < 100 %}
+        {% assign btnWelcomeDisplay=true %}
+      {% endif %}
+  {% endif %}
+
+
+{% endfor %}

@@ -1,0 +1,145 @@
+- id: 'default-home-page-sections-order'
+  title: 'default-home-page-sections-order'
+  collection: 'agency'
+  force_display_coll_ext: true
+  force_display_coll_ext_section: 'home-page-sections'
+  force_display_coll_ext_model: 'agency_default'
+  sort :
+    # defined in /_data/coll_ext/config/sort_site-documents.yml
+    filter: 'order'
+    nb-max-item-per-section: 12
+    choose-subsections: []
+    filter-subsections: []
+
+- id: 'default-home-page-sections-date-publication'
+  title: 'default-home-page-sections-date-publication'
+  collection: 'agency'
+  force_display_coll_ext: true
+  force_display_coll_ext_section: 'home-page-sections'
+  force_display_coll_ext_model: 'agency_default'
+  sort :
+    # defined in /_data/coll_ext/config/sort_site-documents.yml
+    filter: 'date-publication'
+    nb-max-item-per-section: 12
+    choose-subsections: []
+    filter-subsections: []
+
+- id: 'default-detailed-contents-order'
+  title : 'default-detailed-contents-order'
+  collection: 'detailed-contents'
+  force_display_coll_ext: true
+  force_display_coll_ext_section: 'detailed-contents'
+  force_display_coll_ext_model: 'agency_default'
+  sort :
+    # defined in /_data/coll_ext/config/sort_site-documents.yml
+    filter: 'order'
+    nb-max-item-per-section: 12
+    choose-subsections: []
+    filter-subsections: []    
+- id : 'default-detailed-contents-date-publication'
+  title : 'default-detailed-contents-date-publication'
+  collection: 'detailed-contents'
+  force_display_coll_ext: true
+  force_display_coll_ext_section: 'detailed-contents'
+  force_display_coll_ext_model: 'agency_default'
+  sort :
+    # defined in /_data/coll_ext/config/sort_site-documents.yml
+    filter: 'date-publication'
+    nb-max-item-per-section: 12
+    choose-subsections: []
+    filter-subsections: []
+
+- id: 'portfolio-order'
+  title : 'portfolio-order'
+  collection: 'detailed-contents'
+  force_display_coll_ext: true
+  force_display_coll_ext_section: 'detailed-contents'
+  force_display_coll_ext_model: 'agency_default'
+  sort :
+    # defined in /_data/coll_ext/config/sort_site-documents.yml
+    filter: 'order'
+    nb-max-item-per-section: 12
+    choose-subsections: ['portfolio']
+    filter-subsections: []    
+- id : 'portfolio-date-publication'
+  title : 'portfolio-date-publication'
+  collection: 'detailed-contents'
+  force_display_coll_ext: true
+  force_display_coll_ext_section: 'detailed-contents'
+  force_display_coll_ext_model: 'agency_default'
+  sort :
+    # defined in /_data/coll_ext/config/sort_site-documents.yml
+    filter: 'date-publication'
+    nb-max-item-per-section: 12
+    choose-subsections: ['portfolio']
+    filter-subsections: []
+
+
+
+
+
+
+- id: 'sections-order'
+  title: 'sections-order'
+  collection: 'agency'
+  force_display_coll_ext: true
+  force_display_coll_ext_section: 'home-page-sections'
+  force_display_coll_ext_model: 'agency_sections'
+  sort :
+    # defined in /_data/coll_ext/config/sort_site-documents.yml
+    filter: 'order'
+    nb-max-item-per-section: 12
+    choose-subsections: []
+    filter-subsections: []
+
+- id: 'background-images-order'
+  title: 'background-images-order'
+  collection: 'agency'
+  force_display_coll_ext: true
+  force_display_coll_ext_section: 'site-config'
+  force_display_coll_ext_model: 'agency_default'
+  sort :
+    # defined in /_data/coll_ext/config/sort_site-documents.yml
+    filter: 'order'
+    nb-max-item-per-section: 12
+    choose-subsections: ['background-images']
+    filter-subsections: []
+
+- id: 'footer-order'
+  title: 'footer-order'
+  collection: 'agency'
+  force_display_coll_ext: true
+  force_display_coll_ext_section: 'site-config'
+  force_display_coll_ext_model: 'agency_default'
+  sort :
+    # defined in /_data/coll_ext/config/sort_site-documents.yml
+    filter: 'order'
+    nb-max-item-per-section: 12
+    choose-subsections: ['footer']
+    filter-subsections: []
+
+- id: 'google-font-order'
+  title: 'google-font-order'
+  collection: 'agency'
+  force_display_coll_ext: true
+  force_display_coll_ext_section: 'site-config'
+  force_display_coll_ext_model: 'agency_default'
+  sort :
+    # defined in /_data/coll_ext/config/sort_site-documents.yml
+    filter: 'order'
+    nb-max-item-per-section: 12
+    choose-subsections: ['google-font']
+    filter-subsections: []
+
+- id: 'palette-color-order'
+  title: 'palette-color-order'
+  collection: 'agency'
+  force_display_coll_ext: true
+  force_display_coll_ext_section: 'site-config'
+  force_display_coll_ext_model: 'agency_default'
+  sort :
+    # defined in /_data/coll_ext/config/sort_site-documents.yml
+    filter: 'order'
+    nb-max-item-per-section: 12
+    choose-subsections: ['palette-color']
+    filter-subsections: []

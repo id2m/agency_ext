@@ -1,0 +1,87 @@
+
+
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <!-- <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i> -->
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand page-scroll" href="#page-top">{{site.title}}</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="hidden">
+                    <a href="#page-top"></a>
+                </li>
+
+                {% comment %}from layout, default-agency{% endcomment %}
+                {% for index_section in (0..array_sections_size) %}
+                
+                    {% assign index_array_part = array_sections[index_section] | plus: 0  %}
+                    {% assign section_tmp = raw_items_section[index_array_part] %}
+
+                    {% if section_tmp.path-navig %}
+                    
+                        {% assign name_id= null %}
+                        {% include coll_ext/utils/extract_from_url/name_id.html 
+                            url=section_tmp.url
+                            last_part_only=true
+                        %}
+
+                        <li>
+                            <a class="page-scroll" href="#{{name_id}}">{{section_tmp.path-navig}}</a>
+                        </li>
+
+                        {% if forloop.first == true %}
+                            {% assign name_id_first = name_id %}
+                        {% endif %}
+
+                    {% endif %}
+                {% endfor %}
+
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+
+
+
+<!-- Header -->
+{% comment %} extract information from collection agency{% endcomment %}
+{% include agency/utils/site-config/extract_header.html %}
+
+<header>
+    <div class="container">
+        <div class="intro-text">
+            <div>
+                {{textWelcome}}
+            </div>
+
+            {% if name_id_first and btnWelcomeDisplay == true %}
+
+                {% assign text_btn = 'Tell Me More' %}
+                {% if btnWelcome.length > 2 %}
+                    {% assign text_btn = btnWelcome %}
+                {% endif %}
+
+                <a href="#{{name_id_first}}" class="page-scroll btn btn-xl">
+                    {{text_btn}}
+                </a>
+                
+            {% endif %}
+
+        </div>
+    </div>
+</header>
+
+

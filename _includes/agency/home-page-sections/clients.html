@@ -1,0 +1,30 @@
+{% comment %} extract information from collection agency{% endcomment %}
+{% include agency/utils/home-page-sections/extract-info/default_section.html
+    name_id = include.name_id    
+%}
+
+<aside id="{{include.name_id}}" class="clients {{include.class_bg_color}}" style="{{include.add_custom_style}}">
+    <div class="container">
+        <div class="row">
+            {% for index_item in (0..array_items_size) %}
+
+                {% assign index_array_part = array_items[index_item] | plus: 0  %}
+                {% assign item_tmp = raw_items[index_array_part] %}
+
+                <div class="col-md-3 col-sm-6">
+                    {% if item_tmp.link %}
+                        <a href="{{item_tmp.link}}">
+                    {% endif %}                
+                        {% if item_tmp.type-miniature == 'image-centered' %}
+                            {% picture clients-miniature {{item_tmp.miniature}} alt="client {{item_tmp.title}}" %}
+                        {% endif %}                
+                    {% if item_tmp.link %}
+                        </a>
+                    {% endif %}
+                </div>
+
+            {% endfor %}
+
+        </div>
+    </div>
+</aside>

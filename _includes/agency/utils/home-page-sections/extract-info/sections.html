@@ -1,0 +1,51 @@
+
+{% include coll_ext/config/common-param.html %}
+
+{% assign path_ref = '/home-page-sections/' %}
+{% assign model_sort_ref = 'sections-order' %}
+
+
+{% for list in site.data.agency.list-detail-items %}
+  {% if list.id == model_sort_ref %} 
+    {% if list.force_display_coll_ext == true %}
+      {% include coll_ext/extra_utils/list-detail-items_init_step.html %}
+     
+      {% include coll_ext/main.html
+        force_page_ref_input=true
+        force_display_empty_section=true
+        force_no_display=true       
+      %}
+    {% endif %}
+  {% endif %}
+{% endfor %}
+
+
+{% assign period_info_subsection = site.data.coll_ext.config.display_list-items.config.period_info_subsection | plus: 0 %}
+{% assign offset_index_subsection = site.data.coll_ext.config.display_list-items.config.offset_index_subsection | plus: 0 %}
+
+{% if info_section_subsection != delim %}
+  {% assign info_section_subsection_part = info_section_subsection | remove_first: delim | split: delim  %}
+  {% assign info_section_subsection_size = info_section_subsection_part.size %}
+{% endif%}
+
+{% assign nb_max_subsection = info_section_subsection_size | divided_by: period_info_subsection %}
+{% assign index_sub_ref = 0  %}
+
+{% assign current_sections = delim %}
+
+{% for iter_subsections in (1..nb_max_subsection)  %}
+
+  {% comment %}<!-- info current subsection -->{% endcomment %}
+  {% assign index_tmp = index_sub_ref | plus: offset_index_subsection %}
+  {% assign index_subsection = info_section_subsection_part[index_tmp] | plus: 0 %}
+
+  {% assign current_sections = current_sections | append : index_subsection | append: delim %}
+
+  {% assign index_sub_ref = index_sub_ref | plus: period_info_subsection %}
+
+{% endfor %}
+
+{% assign raw_items_section = raw_items %}
+{% assign array_sections = current_sections | remove_first: delim | split: delim %}
+{% assign array_sections_size = nb_max_subsection | minus: 1 %}
+

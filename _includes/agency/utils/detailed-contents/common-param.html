@@ -1,0 +1,39 @@
+{% comment %}
+<!--
+  param in:
+    include.name_id
+    include.default_section
+
+  param out :
+     default label collection, path, sort ref
+
+-->
+{% endcomment %}
+
+
+{% include coll_ext/config/common-param.html %}
+
+{% assign collection_label = 'detailed-contents' %}
+{% assign repo_ref = '/detailed-contents/' %}
+{% assign model_section = 'default-detailed-contents' %}
+
+
+{% assign default_order_sort_coll = 'order' %}
+{% assign date_sort_coll = 'date-publication' %}
+
+
+
+
+{% assign path_ref = repo_ref | append: include.name_id | append: '/' %}
+
+
+{% comment %} 
+	info sort items, call model in /_data/agency/list-detail-items.yml
+{% endcomment %}
+
+{% if include.default_section == null or include.default_section == false %}
+	{% assign model_section = include.name_id %}
+{% endif %}
+
+{% assign model_sort_ref = model_section | append: '-' | append: default_order_sort_coll %}
+{% assign model_sort_date = model_section | append: '-' | append: date_sort_coll %}

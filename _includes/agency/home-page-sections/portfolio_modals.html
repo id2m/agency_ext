@@ -1,0 +1,52 @@
+{% comment %}list items part on collection detailed-contents{% endcomment %}
+{% include agency/utils/detailed-contents/extract-info/portfolio.html
+    name_id = include.name_id
+%}
+
+{% for index_item in (0..array_items_size) %}
+
+    {% assign index_array_part = array_items[index_item] | plus: 0  %}
+    {% assign item_tmp = raw_items[index_array_part] %}
+
+    <div class="portfolio-modal modal fade" id="portfolioModal{{forloop.index}}" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h2>{{ item_tmp.title }}</h2>
+                            <hr class="star-primary">
+                            
+                            {% picture portfolio-header-image {{item_tmp.image}} alt="{{item_tmp.description-image}}" %}
+
+                            <p>{{ item_tmp.description }}</p>
+                            
+                            <ul class="list-inline item-details">
+                                <li>Client:
+                                    <strong><a href="http://startbootstrap.com">{{ item_tmp.client }}</a>
+                                    </strong>
+                                </li>
+                                <li>Date:
+                                    <strong><a href="http://startbootstrap.com">{{ item_tmp.project-date }}</a>
+                                    </strong>
+                                </li>
+                                <li>Service:
+                                    <strong><a href="http://startbootstrap.com">{{ item_tmp.category }}</a>
+                                    </strong>
+                                </li>
+                            </ul>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endfor %}

@@ -1,0 +1,82 @@
+{% comment %}
+<!--
+  param in:
+    include.name_id
+    include.filtering_list_items
+
+  param out :
+
+-->
+{% endcomment %}
+
+{% include agency/utils/home-page-sections/common-param.html 
+  name_id = include.name_id
+  default_section = true
+%}
+
+{% comment %} 
+  info section home-page : heading, subheading,.. on index.md file
+{% endcomment %}
+{% assign only_intern_param = false %}
+{% for collection in site.collections %}
+  {% if collection.label == collection_label %}
+    {% assign raw_items_init = collection.docs %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+{% assign items_tmp = raw_items_init | sort: default_order_sort_coll %}
+{% for item_tmp in items_tmp %}    
+  {% if item_tmp.path contains path_ref %} 
+    {% if item_tmp.path contains extension_section_path  %}
+
+      {% if only_intern_param == null or only_intern_param == false %}
+
+        {% comment %}------------------------------{% endcomment %}
+        {% comment %} output metadata, public part {% endcomment %}
+        {% comment %}------------------------------{% endcomment %}
+        {% assign section_heading = item_tmp.title %}
+        {% assign section_subheading = item_tmp.description %}
+        {% assign section_last_words = item_tmp.last_words %}
+
+      {% endif %}
+
+      {% comment %}------------------------------{% endcomment %}
+      {% comment %} output metadata, private     {% endcomment %}
+      {% comment %}------------------------------{% endcomment %}
+      {% assign section_sort_items = item_tmp.sort_items %}
+        
+    {% endif %}
+  {% endif %}
+{% endfor %}
+{% if section_sort_items == date_sort_coll %}
+    {% assign model_sort_ref = model_sort_date %}
+{% endif %}
+
+
+{% comment %} 
+  list items 
+{% endcomment %}
+{% assign array_items_size = -1 %}
+{% assign array_items = delim %}
+{% if include.filtering_list_items == null or include.filtering_list_items == false %}
+  
+  {% for list in site.data.agency.list-detail-items %}
+    {% if list.id == model_sort_ref %} 
+      {% if list.force_display_coll_ext == true %}
+
+        {% include coll_ext/extra_utils/list-detail-items_init_step.html 
+          force_array_choose_subsections=include.name_id
+        %}
+        {% include coll_ext/main.html
+          force_page_ref_input=true
+          force_no_display=true       
+        %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+
+  {% assign array_items = items_display_subsection | remove_first: delim | split: delim %}
+  {% assign array_items_size = array_items.size | minus: 1 %}
+{% endif %}
+
+

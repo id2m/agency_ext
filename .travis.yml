@@ -1,0 +1,25 @@
+language: ruby
+rvm:
+- 2.3.3
+branches:
+  only:
+  - master
+before_install:
+- chmod u+x deploy_init.sh
+- bash deploy_init.sh
+- npm install
+before_script:
+- gulp jsmin_travis
+script:
+- bundle exec jekyll build
+- gulp imagemin
+before_deploy:
+- chmod u+x deploy.sh
+deploy:
+  provider: script
+  script: "./deploy.sh"
+  skip_cleanup: true
+sudo: false
+env:
+  global:
+    secure: QsXlb8C/Xc4j12n5jKzHYfb4GlbeJP/WQ7kFFiL3N27RNsoZjZFgpYxnTDdcIozJYtAPOODw5q+VKyxa+SLlut1aG5IF3q8LukQRXUakfEgM6Tkt+57B/et2bE/sjKuWglBFXoEib5GUKXhOt4VJKaZNj7PcYsK8R4w52yWRVW8OlJZ2PhLlOSLhvWSx8mdhYM7+eL+r3KS6wnImwtK+JadWIdQ7pptOjCi6JqPVjYf7FUHFDskylzbWafGfqvD6l72jriOeO95V5OM3J6nuBDWYn7KKIo/Smz3lxsjIUdJ1lon1rU9SVxHvm7IlM+CjpTGQeh/3l1xadd3yJ+Dw3QEQGEEl8SGFaeSk/WENvLOpsVSNWdjiQb4+LMhxD6P1NORSjP+SZ/rMSkesVPLSTnE6Y2i+/jI0mUzwt/Ec3VHRFNroDvjo0EPX9yGMOURlJhCHbeEpngnGGcWuTMSynsnFJM/ss9EVo9aUzNVwjfZOHwrK0FTgDt9B+Tm7ygFjFufP8zWak+/CobU1Hs4+zj2H8PTUEy6Y1Ug8M4G6UosIdmdnOFBUYI6aoPIxT3FfIPjY0afWrAfpELVbxQVZU6Aex5RbPRD6vbbpavFkD3PBfSNOpoOJwInzrF0dNCZDv46vC9QL1Uh9YQaXsVhQf2EYEEs/yIZAtLfIXamexBI=
