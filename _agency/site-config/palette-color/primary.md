@@ -1,7 +1,0 @@
----
-title: Primary
-date-publication: 2017-01-18 12-00-00
-order: 1
-color: "#fed136"
-color_ref: "Created with color #fed136"
----
