@@ -1,1 +1,1 @@
-Sitemap: https://d2m.tech/agency_ext/sitemap.xml
+Sitemap: http://localhost:5000/agency_ext/sitemap.xml
