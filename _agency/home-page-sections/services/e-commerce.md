@@ -5,6 +5,6 @@ order: 1
 type_editor: SimpleMd
 miniature: fa-shopping-cart
 type-miniature: font-awesome
-last_modified : 2017-05-12 22-55-07
+last_modified : 2017-05-12 23-59-36
 ---
 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.
