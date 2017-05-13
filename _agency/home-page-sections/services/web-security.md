@@ -5,6 +5,6 @@ order: 3
 type_editor: SimpleMd
 miniature: fa-lock
 type-miniature: font-awesome
-last_modified : 2017-05-13 13-27-56
+last_modified : 2017-05-13 13-36-06
 ---
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit?
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.
