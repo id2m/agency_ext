@@ -14,7 +14,9 @@ Note : on Wordpress, end-users can access all sections contents.
 
 #### Demo editor
 
-- [create a new item on service section](https://drive.google.com/open?id=0B8fHSjalmbNEOWg3eVJrLWtxZmc)
+- [create a new item on service section then update production site](https://drive.google.com/open?id=0B8fHSjalmbNEQVRmMXctczZpNVE)
+
+- [modify background section, color and font, then delete these local updates](https://drive.google.com/open?id=0B8fHSjalmbNEOWg3eVJrLWtxZmc)
 
 
 
@@ -22,3 +24,7 @@ Note : on Wordpress, end-users can access all sections contents.
 #### Limitations :
 
 - at this time, main contribution is kept private : liquid lib to access metadata on build, custom editor
+
+- build time has grown with plugin jekyll-asset and compress options activated, see [webpacked-jekyll-assets-react](https://github.com/admien33/webpacked-jekyll-assets-react) to get a faster build time. Todo integration.
+
+- Next step : [clean_agency_demo01](https://github.com/admien33/clean_agency_demo01.git). Editor needs to be adapted.
