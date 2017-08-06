@@ -14,9 +14,9 @@ Note : on Wordpress, end-users can access all sections contents.
 
 #### Demo editor
 
-- [create a new item on service section then update production site](https://drive.google.com/open?id=0B8fHSjalmbNEQVRmMXctczZpNVE)
+- [create a new item on service section then update production site](https://drive.google.com/open?id=0B8fHSjalmbNEOWg3eVJrLWtxZmc)
 
-- [modify background section, color and font, then delete these local updates](https://drive.google.com/open?id=0B8fHSjalmbNEOWg3eVJrLWtxZmc)
+- [modify background section, color and font, then delete these local updates](https://drive.google.com/open?id=0B8fHSjalmbNEQVRmMXctczZpNVE)
 
 
 
