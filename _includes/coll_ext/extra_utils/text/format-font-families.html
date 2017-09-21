@@ -1,0 +1,28 @@
+{%comment%}<!--
+param in :
+  include.font_families
+param out :
+  font_families_format
+ -->{%endcomment%}
+
+
+{% assign sep_ref = ',' %}
+{% assign sep_space= ' ' %}
+
+{% assign font_split = include.font_families | split: sep_ref %}
+{% assign size_font_split = font_split.size | minus: 1 %}
+
+{% assign font_families_format = '' %}
+{% for index_font in (0..size_font_split) %}
+
+	{% assign font_tmp = font_split[index_font] | strip %}
+	{% if font_tmp contains sep_space %}
+		{% assign font_tmp = font_tmp | prepend: '"' | append: '"' %}
+	{% endif %}
+
+	{% assign font_families_format = font_families_format | append: font_tmp %}
+	{% unless forloop.last %}
+		{% assign font_families_format = font_families_format | append: ',' %}
+	{% endunless %}
+{% endfor %}
+

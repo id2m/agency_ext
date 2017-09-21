@@ -6,14 +6,15 @@ gem 'breakpoint'
 
 # Jekyll
 gem 'jekyll'
-gem 'jekyll-assets'
+# gem 'jekyll-assets'
 gem 'jekyll-sitemap'
 
-gem 'stringex'
+# gem 'stringex'
 
 # see update dependency mini_magick fastimage
 group :jekyll_plugins do
   gem 'jekyll-picture-tag', git: 'https://github.com/id2m/jekyll-picture-tag', branch: 'master'
+  gem 'jekyll-assets', git: 'https://github.com/jekyll/jekyll-assets', branch: 'master'
 end
 
 # gem 'autoprefixer-rails', '~> 6.7.7.1'

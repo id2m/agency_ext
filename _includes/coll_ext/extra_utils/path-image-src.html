@@ -1,0 +1,21 @@
+{%comment%}
+<!--
+  param in:
+    include.path_image
+    
+
+  global
+    site.path_image
+    site.baseurl
+
+  param out :
+     src_img
+
+-->
+{%endcomment%}
+
+{% assign src_img = '' %}
+{% if include.path_image %}
+	{% assign src_img = include.path_image | prepend: '/'  | prepend: site.path_image_baseurl | prepend: '/'  %}
+{% endif %}
+{% assign src_img = src_img | prepend: site.baseurl  %}

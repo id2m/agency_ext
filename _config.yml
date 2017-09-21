@@ -86,7 +86,7 @@ exclude:
 
 # Plugins
 whitelist: []
-gems:
+plugins:
   - jekyll-assets # generate locally !
   - jekyll-sitemap
 

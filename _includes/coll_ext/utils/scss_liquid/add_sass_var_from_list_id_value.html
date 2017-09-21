@@ -1,0 +1,53 @@
+{%comment%}
+<!--
+  param in :
+    include
+      list_id_value ,   form "color1:#ffffff,color2:#ffffff"
+      list_id_ref,  site.data.agency.scss_config.background-sections.list-id
+      pref_sass_var, 'color_'
+      suf_sass_var, '_gl'
+
+      extension_section
+      extension_item
+
+  param out
+    current_item_is_section
+    current_item_url_size
+    last_part_url_curren_item
+
+-->
+{%endcomment%}
+
+{% assign deb_sass_var = '$' %}
+{% assign mid_sass_var = ': ' %}
+{% assign fin_sass_var = ';' %}
+
+
+{% assign list_id_value = include.list_id_value %}
+{% assign array_id_value = list_id_value | split: ',' %}
+{% assign nb_elt =  array_id_value.size | minus: 1 %}
+
+{% for  i in (0..nb_elt) %}
+
+  {% assign id_value = array_id_value[i] %}
+  {% assign id_value_split = id_value | split: ':' %}
+
+  {% assign id_meta = id_value_split[0] %}
+  {% assign color_meta = id_value_split[1] %}
+
+  {% assign add_scss_var = false %}
+  {% for elt_ref in include.list_id_ref  %}
+    {% if elt_ref.id == id_meta  %}
+      {% assign add_scss_var = true %}
+    {% endif %}
+  {% endfor %}
+
+  {% if add_scss_var == true %}
+    {% assign name_var = include.pref_sass_var  | append:  id_meta | append: include.suf_sass_var %}
+    {% assign var_sass = deb_sass_var | append: name_var | append: mid_sass_var | append: color_meta | append: fin_sass_var  %}
+
+    {{var_sass}}
+
+  {% endif %}
+
+{% endfor %}
