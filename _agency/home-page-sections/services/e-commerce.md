@@ -1,10 +1,10 @@
 ---
-title: E-Commerce
-date-publication: 2017-01-18 12-00-00
-order: 1
-type_editor: SimpleMd
-miniature: fa-shopping-cart
-type-miniature: font-awesome
-last_modified : 2017-05-14 14-42-58
+title : E-Commerce
+date-publication : 2017-01-18 12-00-00
+order : 6
+type_editor : SimpleMd
+last_modified : 2017-09-22 23-44-51
+type-miniature : font-awesome
+miniature : fa-shopping-cart
 ---
 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.
