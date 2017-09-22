@@ -12,7 +12,7 @@ description: "Write an awesome description for your new site here. You can edit 
 # baseurl: ""
 baseurl: "/agency_ext" # the subpath of your site, e.g. /blog
 # url: http://admien33.github.io # the base hostname & protocol for your site
-url: https://d2m.tech # the base hostname & protocol for your site
+url: # the base hostname & protocol for your site
 path_image_baseurl: images
 path_image_originals: images/_originals
 
