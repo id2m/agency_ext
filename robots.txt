@@ -1,1 +1,1 @@
-Sitemap: https://d2m.tech/agency_ext/sitemap.xml
+Sitemap: /agency_ext/sitemap.xml
